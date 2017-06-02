@@ -1,0 +1,6 @@
+name = Pine River Blocks
+description = Provides custom blocks for Pine River
+package = PR
+core = 7.x
+
+configure = admin/config/search/pr_blocks
