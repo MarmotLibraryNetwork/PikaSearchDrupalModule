@@ -1,0 +1,6 @@
+name = Pika Search Box Blocks
+description = Provides custom blocks for a Search Box of a Pika Catalog
+package = PIKA
+core = 7.x
+
+configure = admin/config/search/pika_blocks
