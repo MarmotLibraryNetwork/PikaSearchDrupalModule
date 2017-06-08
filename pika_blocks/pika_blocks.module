@@ -132,36 +132,36 @@ function pika_blocks_search_small_form() {
 	}
 
 function pika_blocks_menu(){
-	//Main browse
-	//TODO: Should the callback just send us to Pika?
-	//No the callback should not send us to Pika because then we can never see the sublinks.
-	$items['browse'] = array(
-		'title' => 'Browse Pika',
-		'access callback' => true,
-		'page callback' => 'drupal_goto',
-		'page arguments' => array(
-			variable_get('pika_blocks_opac_url'),
-		),
-	);
-	//Create sub menus
-	//Call the API to see what browse categories the user has active
-	$api_result = file_get_contents(variable_get('pika_blocks_opac_url') . "/Browse/AJAX?method=getActiveBrowseCategories");
-	//Transform what we got from the API into JSON
-	$api_json = json_decode($api_result);
-
-	//Create sub menus
-	$i = 0;
-	foreach ($api_json as $browse_category_info){
-		$items['browse/' . $browse_category_info->text_id] = array(
-			'title' => $browse_category_info->display_label,
-			'access callback' => true,
-			'page callback' => 'drupal_goto',
-			'page arguments' => array(
-				$browse_category_info->link
-			),
-			'weight' => $i++
-		);
-	}
+//	//Main browse
+//	//TODO: Should the callback just send us to Pika?
+//	//No the callback should not send us to Pika because then we can never see the sublinks.
+//	$items['browse'] = array(
+//		'title' => 'Browse Pika',
+//		'access callback' => true,
+//		'page callback' => 'drupal_goto',
+//		'page arguments' => array(
+//			variable_get('pika_blocks_opac_url'),
+//		),
+//	);
+//	//Create sub menus
+//	//Call the API to see what browse categories the user has active
+//	$api_result = file_get_contents(variable_get('pika_blocks_opac_url') . "/Browse/AJAX?method=getActiveBrowseCategories");
+//	//Transform what we got from the API into JSON
+//	$api_json = json_decode($api_result);
+//
+//	//Create sub menus
+//	$i = 0;
+//	foreach ($api_json as $browse_category_info){
+//		$items['browse/' . $browse_category_info->text_id] = array(
+//			'title' => $browse_category_info->display_label,
+//			'access callback' => true,
+//			'page callback' => 'drupal_goto',
+//			'page arguments' => array(
+//				$browse_category_info->link
+//			),
+//			'weight' => $i++
+//		);
+//	}
 
 	//Add a configuration block for the module
 	$items['admin/config/search/pika_blocks'] = array(
